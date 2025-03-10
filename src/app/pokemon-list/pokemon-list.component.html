@@ -1,0 +1,33 @@
+<h1 class="text-2xl font-bold mb-4 text-center m-4">Lista de Pokémon</h1>
+<div class="flex items-center justify-center w-auto">
+  <ul class="grid grid-cols-12 gap-4 bg-red-40 text-center">
+    <li
+      *ngFor="let pokemon of pokemonLista"
+      (click)="cargarPokemonDetalles(pokemon.name)"
+      class="p-4 bg-blue-100 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 hover:scale-109"
+    >
+      {{ pokemon.name | titlecase }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="seleccionarPokemon" class="mt-8 flex flex-col items-center justify-center">
+  <div class="items-center justify-center flex flex-col border-2 border-blue-400 shadow-lg shadow-blue-300/50 bg-blue-100">
+    <h2 class="text-xl font-semibold">{{ seleccionarPokemon.name | titlecase }}</h2>
+    <p class="mt-2">Tipo: {{ seleccionarPokemon.type }}</p>
+    <div class="border-2 border-blue-600 m-2">
+      <h2 class="text-center m-2">Detalles:</h2>
+      <ul class="grid grid-cols-2 gap-2 space-x-5 ml-10 list-disc m-2">
+        <li>ID: {{ seleccionarPokemon.id }}</li>
+        <li>Nombre: {{ seleccionarPokemon.name | titlecase }}</li>
+        <li>Tipo: {{ seleccionarPokemon.type }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="m-4 flex items-center justify-center">
+  <button (click)="modificarPokemon()" class="cursor-pointer border-1 bg-gray-200 hover:bg-gray-300 hover:shadow-md">Modificar</button>
+</div>
+
