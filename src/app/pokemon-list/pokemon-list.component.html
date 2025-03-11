@@ -3,31 +3,32 @@
   <ul class="grid grid-cols-12 gap-4 bg-red-40 text-center">
     <li
       *ngFor="let pokemon of pokemonLista"
-      (click)="cargarPokemonDetalles(pokemon.name)"
-      class="p-4 bg-blue-100 rounded-lg shadow-md cursor-pointer hover:bg-blue-200 hover:scale-109"
+      (click)="cargarPokemonDetalles(pokemon.nombre)"
+      class="p-4 bg-red-600 text-white rounded-lg shadow-md cursor-pointer hover:bg-red-700 hover:scale-109"
     >
-      {{ pokemon.name | titlecase }}
+      {{ pokemon.nombre | titlecase }}
     </li>
   </ul>
 </div>
 
-<div *ngIf="seleccionarPokemon" class="mt-8 flex flex-col items-center justify-center">
-  <div class="items-center justify-center flex flex-col border-2 border-blue-400 shadow-lg shadow-blue-300/50 bg-blue-100">
-    <h2 class="text-xl font-semibold">{{ seleccionarPokemon.name | titlecase }}</h2>
-    <p class="mt-2">Tipo: {{ seleccionarPokemon.type }}</p>
-    <div class="border-2 border-blue-600 m-2">
+<div *ngIf="seleccionarPokemon" class="mt-8 flex flex-col items-center justify-center text-white">
+  <div class="items-center justify-center flex flex-col border-2 border-gray-400 shadow-lg shadow-red-300 bg-red-600 p-3">
+    <h2 class="text-xl font-semibold">{{ seleccionarPokemon.nombre | titlecase }}</h2>
+    <p class="mt-2">ID: {{ seleccionarPokemon.id }}</p>
+    <div class="border-2 m-2">
       <h2 class="text-center m-2">Detalles:</h2>
       <ul class="grid grid-cols-2 gap-2 space-x-5 ml-10 list-disc m-2">
-        <li>ID: {{ seleccionarPokemon.id }}</li>
-        <li>Nombre: {{ seleccionarPokemon.name | titlecase }}</li>
-        <li>Tipo: {{ seleccionarPokemon.type }}</li>
+        <li>Tipo: {{ seleccionarPokemon.tipo }}</li>
       </ul>
     </div>
   </div>
 </div>
 
 
-<div class="m-4 flex items-center justify-center">
-  <button (click)="modificarPokemon()" class="cursor-pointer border-1 bg-gray-200 hover:bg-gray-300 hover:shadow-md">Modificar</button>
+<div class="mt-12 flex flex-col items-center justify-center space-y-2">
+  <input type="number" [(ngModel)]="id" placeholder="ID del Pokémon" class="border p-2 mx-2 rounded-lg">
+  <input type="text" [(ngModel)]="nombre" placeholder="Nuevo nombre" class="border p-2 mx-2 rounded-lg">
+  <input type="text" [(ngModel)]="tipo" placeholder="Nuevo tipo" class="border p-2 mx-2 rounded-lg">
+  <button (click)="modificarPokemon()" class="cursor-pointer border-1 rounded-lg bg-red-500 hover:bg-red-600 text-white hover:scale-104 hover:shadow-md p-1">Modificar</button>
 </div>
 

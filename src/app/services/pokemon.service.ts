@@ -17,13 +17,14 @@ export class PokemonService {
   }
 
   // Obtener detalles de un Pokémon específico
-  getPokemonDetalles(name: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${name}`);
+  getPokemonDetalles(nombre: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${nombre}`);
   }
 
-  putPokemon(id: number = 0, name: string = '', type: string = ''): void {
-    const body = { id, name, type }; // Esto es lo que se enviará en el cuerpo de la solicitud.
-    this.http.put(`${this.apiUrl}/${id}`, body); // El id en la URL identifica el recurso específico.
+  //Modificar un Pokemon existente
+  putPokemon(id: number = 0, nombre: string = '', tipo: string = ''): Observable<any> {
+    const body = { id, nombre, tipo }; // Esto es lo que se enviará en el cuerpo de la solicitud.
+    return this.http.put(`${this.apiUrl}/${id}`, body); // El id en la URL identifica el recurso específico.
   }
 
 }
